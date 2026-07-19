@@ -239,6 +239,72 @@ small {
   color: #7a1c17;
 }
 
+.explorer__toolbar {
+  background: #ffffff;
+  border: 1px solid #e2e2df;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.explorer__source {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.explorer__source-label {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #6b6b78;
+}
+
+.explorer__status {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 0.85rem;
+  color: #6b6b78;
+  margin: 0;
+}
+.explorer__status--ok {
+  color: #245740;
+}
+.explorer__status--error {
+  color: #b3261e;
+}
+
+.explorer__loading {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: #6b6b78;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.source-btn {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.3rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #2f6f4f;
+  background: transparent;
+  color: #2f6f4f;
+  cursor: pointer;
+}
+.source-btn:hover {
+  background: #e7f1ec;
+}
+.source-btn--active {
+  background: #2f6f4f;
+  color: #fff;
+}
+
 form fieldset {
   border: 1px solid #e2e2df;
   border-radius: 8px;

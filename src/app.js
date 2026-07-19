@@ -30,6 +30,7 @@ app.use(express.json()); // REST API (application/json)
 const proto = path.join(__dirname, "..", "prototype");
 app.use("/css", express.static(path.join(proto, "css")));
 app.use("/assets", express.static(path.join(proto, "assets")));
+app.use("/js", express.static(path.join(proto, "js"))); // client-side scripts (CSR view)
 
 // ---- View helpers (available in every template) -----------------------------
 const MONTHS = [

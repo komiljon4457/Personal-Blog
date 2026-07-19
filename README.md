@@ -181,3 +181,31 @@ curl -X POST http://localhost:3000/graphql -H 'content-type: application/json' \
   -d '{"query":"{ posts { title author { name } commentCount } }"}'
 ```
 
+---
+
+## Client-Side Rendered view (Step 5)
+
+A **CSR page** at `/explore` where the server sends only a shell and the **browser
+fetches the data via AJAX** — from **both** the REST API and the GraphQL API, switchable
+with a live toggle. Full write-up: [`docs/step-5-csr.md`](docs/step-5-csr.md).
+
+- **Shell** — [`src/views/explore.ejs`](src/views/explore.ejs): header/footer + toolbar
+  + empty `#app` root + `<script src="/js/csr.js">`.
+- **Client script** — [`prototype/js/csr.js`](prototype/js/csr.js): vanilla JS (no
+  framework, no build). Fetches the post list & detail, renders the DOM, does
+  hash-based routing, and submits comments by AJAX.
+- **Two backends, one UI** — a REST/GraphQL toggle re-fetches the same view from the
+  other API; a `normalizePost()` helper folds `snake_case` (REST) and `camelCase`
+  (GraphQL) into one shape so the render code is source-agnostic.
+- **SSR vs CSR** — the rest of the site is server-rendered; this page is built in the
+  browser. Open **http://localhost:3000/explore** and toggle the source.
+
+The four rendering/data surfaces now sit over one core:
+
+```
+SSR pages (EJS)   ─┐
+CSR view (/explore)├─▶ REST /api  ─┐
+                   │               ├─▶ services ─▶ repositories ─▶ SQLite
+                   └─▶ GraphQL ────┘
+```
+

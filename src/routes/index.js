@@ -9,6 +9,7 @@ const router = express.Router();
 
 router.get("/", blog.home);
 router.get("/about", blog.about);
+router.get("/explore", blog.explore);
 
 router.get("/contact", blog.contactForm);
 router.post("/contact", blog.submitContact);

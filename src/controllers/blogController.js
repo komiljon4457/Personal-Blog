@@ -69,6 +69,12 @@ const blogController = {
     res.render("about", { title: "About" });
   },
 
+  // Client-side rendered view: serves only a shell; data is fetched via AJAX
+  // (REST + GraphQL) by /js/csr.js in the browser.
+  explore(req, res) {
+    res.render("explore", { title: "Explore (CSR)" });
+  },
+
   contactForm(req, res) {
     res.render("contact", {
       title: "Contact",

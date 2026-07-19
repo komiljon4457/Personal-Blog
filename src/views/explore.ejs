@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head', { title }) %>
+  <body>
+    <%- include('partials/site-header') %>
+
+    <main class="page">
+      <div class="layout-narrow">
+        <!--
+          CSR view: the server sends only this shell. Everything inside #app is
+          fetched via AJAX (REST or GraphQL) and rendered by /js/csr.js in the browser.
+        -->
+        <div class="explorer__toolbar">
+          <div class="explorer__source">
+            <span class="explorer__source-label">Data source:</span>
+            <button type="button" class="source-btn source-btn--active" data-source="rest" aria-pressed="true">REST</button>
+            <button type="button" class="source-btn" data-source="graphql" aria-pressed="false">GraphQL</button>
+          </div>
+          <p id="explorer-status" class="explorer__status" role="status">Initialising…</p>
+        </div>
+
+        <div id="app" aria-live="polite">
+          <noscript>
+            <p>This view is client-side rendered and needs JavaScript. You can browse
+              the server-rendered site from the <a href="/">home page</a>.</p>
+          </noscript>
+        </div>
+      </div>
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <script src="/js/csr.js" defer></script>
+  </body>
+</html>

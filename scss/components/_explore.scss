@@ -1,0 +1,68 @@
+// =============================================================================
+// components/_explore.scss — the CSR "Explore" view (toolbar + source toggle)
+// =============================================================================
+
+@use "../abstracts" as *;
+
+.explorer__toolbar {
+  @include card;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: space(3);
+  padding: space(3) space(4);
+  margin-bottom: space(5);
+}
+
+.explorer__source {
+  display: flex;
+  align-items: center;
+  gap: space(2);
+}
+
+.explorer__source-label {
+  font-family: $font-ui;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: $color-muted;
+}
+
+.explorer__status {
+  font-family: $font-ui;
+  font-size: 0.85rem;
+  color: $color-muted;
+  margin: 0;
+
+  &--ok { color: $color-accent-dark; }
+  &--error { color: $color-danger; }
+}
+
+.explorer__loading {
+  font-family: $font-ui;
+  color: $color-muted;
+  padding: space(5) 0;
+  text-align: center;
+}
+
+// ---- Source toggle buttons --------------------------------------------------
+.source-btn {
+  font-family: $font-ui;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.3rem 0.8rem;
+  border-radius: $radius;
+  border: 1px solid $color-accent;
+  background: transparent;
+  color: $color-accent;
+  cursor: pointer;
+
+  &:hover {
+    background: $color-accent-soft;
+  }
+
+  &--active {
+    background: $color-accent;
+    color: #fff;
+  }
+}
