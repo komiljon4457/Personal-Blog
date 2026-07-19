@@ -23,74 +23,95 @@
       </div>
     </header>
 
-    <main class="page">
-      <header class="page-intro">
+    <!-- BEM block: dashboard -->
+    <main class="page dashboard">
+      <header class="dashboard__intro">
         <h1>Dashboard</h1>
-        <p>
+        <p class="dashboard__summary">
           Welcome back, Anna. You have <strong>3 published</strong> posts, 1 draft,
           and 2 comments awaiting moderation.
         </p>
-        <p><a href="post-editor.html" class="btn">+ New post</a></p>
+        <p class="dashboard__actions">
+          <a href="post-editor.html" class="btn">+ New post</a>
+        </p>
       </header>
 
-      <section aria-labelledby="posts-heading">
-        <h2 id="posts-heading">Your posts</h2>
-        <div class="table-scroll">
-          <table class="data-table">
-            <caption>
+      <section class="dashboard__section dashboard__section--first" aria-labelledby="posts-heading">
+        <h2 class="dashboard__section-title" id="posts-heading">Your posts</h2>
+        <!-- BEM block: scroll-box (wraps the table for small screens) -->
+        <div class="scroll-box">
+          <!-- BEM block: admin-table -->
+          <table class="admin-table">
+            <caption class="admin-table__caption">
               All posts, most recent first
             </caption>
-            <thead>
-              <tr>
-                <th scope="col">Title</th>
-                <th scope="col">Category</th>
-                <th scope="col">Status</th>
-                <th scope="col">Published</th>
-                <th scope="col">Comments</th>
-                <th scope="col">Actions</th>
+            <thead class="admin-table__head">
+              <tr class="admin-table__row">
+                <th class="admin-table__heading" scope="col">Title</th>
+                <th class="admin-table__heading" scope="col">Category</th>
+                <th class="admin-table__heading" scope="col">Status</th>
+                <th class="admin-table__heading" scope="col">Published</th>
+                <th class="admin-table__heading" scope="col">Comments</th>
+                <th class="admin-table__heading" scope="col">Actions</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td><a href="post.html">Three days in the Dolomites without a car</a></td>
-                <td>Travel</td>
-                <td><span class="badge badge--published">Published</span></td>
-                <td><time datetime="2026-07-12">12 Jul 2026</time></td>
-                <td>2</td>
-                <td>
+              <tr class="admin-table__row">
+                <td class="admin-table__cell">
+                  <a href="post.html">Three days in the Dolomites without a car</a>
+                </td>
+                <td class="admin-table__cell">Travel</td>
+                <td class="admin-table__cell">
+                  <span class="badge badge--published">Published</span>
+                </td>
+                <td class="admin-table__cell"><time datetime="2026-07-12">12 Jul 2026</time></td>
+                <td class="admin-table__cell">2</td>
+                <td class="admin-table__cell admin-table__cell--actions">
                   <a href="post-editor.html" class="btn btn--ghost btn--small">Edit</a>
                   <button type="button" class="btn btn--danger btn--small">Delete</button>
                 </td>
               </tr>
-              <tr>
-                <td><a href="post.html">Why I moved my blog to plain HTML and CSS</a></td>
-                <td>Tech</td>
-                <td><span class="badge badge--published">Published</span></td>
-                <td><time datetime="2026-06-30">30 Jun 2026</time></td>
-                <td>5</td>
-                <td>
+              <tr class="admin-table__row">
+                <td class="admin-table__cell">
+                  <a href="post.html">Why I moved my blog to plain HTML and CSS</a>
+                </td>
+                <td class="admin-table__cell">Tech</td>
+                <td class="admin-table__cell">
+                  <span class="badge badge--published">Published</span>
+                </td>
+                <td class="admin-table__cell"><time datetime="2026-06-30">30 Jun 2026</time></td>
+                <td class="admin-table__cell">5</td>
+                <td class="admin-table__cell admin-table__cell--actions">
                   <a href="post-editor.html" class="btn btn--ghost btn--small">Edit</a>
                   <button type="button" class="btn btn--danger btn--small">Delete</button>
                 </td>
               </tr>
-              <tr>
-                <td><a href="post.html">A slow-cooked lentil stew for grey days</a></td>
-                <td>Food</td>
-                <td><span class="badge badge--published">Published</span></td>
-                <td><time datetime="2026-06-18">18 Jun 2026</time></td>
-                <td>1</td>
-                <td>
+              <tr class="admin-table__row">
+                <td class="admin-table__cell">
+                  <a href="post.html">A slow-cooked lentil stew for grey days</a>
+                </td>
+                <td class="admin-table__cell">Food</td>
+                <td class="admin-table__cell">
+                  <span class="badge badge--published">Published</span>
+                </td>
+                <td class="admin-table__cell"><time datetime="2026-06-18">18 Jun 2026</time></td>
+                <td class="admin-table__cell">1</td>
+                <td class="admin-table__cell admin-table__cell--actions">
                   <a href="post-editor.html" class="btn btn--ghost btn--small">Edit</a>
                   <button type="button" class="btn btn--danger btn--small">Delete</button>
                 </td>
               </tr>
-              <tr>
-                <td><a href="post-editor.html">Notes on the Berlin S-Bahn (untitled)</a></td>
-                <td>Travel</td>
-                <td><span class="badge badge--draft">Draft</span></td>
-                <td>&mdash;</td>
-                <td>0</td>
-                <td>
+              <tr class="admin-table__row">
+                <td class="admin-table__cell">
+                  <a href="post-editor.html">Notes on the Berlin S-Bahn (untitled)</a>
+                </td>
+                <td class="admin-table__cell">Travel</td>
+                <td class="admin-table__cell">
+                  <span class="badge badge--draft">Draft</span>
+                </td>
+                <td class="admin-table__cell">&mdash;</td>
+                <td class="admin-table__cell">0</td>
+                <td class="admin-table__cell admin-table__cell--actions">
                   <a href="post-editor.html" class="btn btn--ghost btn--small">Edit</a>
                   <button type="button" class="btn btn--danger btn--small">Delete</button>
                 </td>
@@ -100,36 +121,36 @@
         </div>
       </section>
 
-      <section aria-labelledby="mod-heading" style="margin-top: var(--space-6)">
-        <h2 id="mod-heading">Comments awaiting moderation</h2>
-        <div class="table-scroll">
-          <table class="data-table">
-            <caption>
+      <section class="dashboard__section" aria-labelledby="mod-heading">
+        <h2 class="dashboard__section-title" id="mod-heading">Comments awaiting moderation</h2>
+        <div class="scroll-box">
+          <table class="admin-table">
+            <caption class="admin-table__caption">
               Pending comments
             </caption>
-            <thead>
-              <tr>
-                <th scope="col">Author</th>
-                <th scope="col">On post</th>
-                <th scope="col">Excerpt</th>
-                <th scope="col">Actions</th>
+            <thead class="admin-table__head">
+              <tr class="admin-table__row">
+                <th class="admin-table__heading" scope="col">Author</th>
+                <th class="admin-table__heading" scope="col">On post</th>
+                <th class="admin-table__heading" scope="col">Excerpt</th>
+                <th class="admin-table__heading" scope="col">Actions</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Marco</td>
-                <td><a href="post.html">Three days in the Dolomites</a></td>
-                <td>&ldquo;Which app did you use to check the bus times?&rdquo;</td>
-                <td>
+              <tr class="admin-table__row">
+                <td class="admin-table__cell">Marco</td>
+                <td class="admin-table__cell"><a href="post.html">Three days in the Dolomites</a></td>
+                <td class="admin-table__cell">&ldquo;Which app did you use to check the bus times?&rdquo;</td>
+                <td class="admin-table__cell admin-table__cell--actions">
                   <button type="button" class="btn btn--small">Approve</button>
                   <button type="button" class="btn btn--danger btn--small">Delete</button>
                 </td>
               </tr>
-              <tr>
-                <td>Lena</td>
-                <td><a href="post.html">Three days in the Dolomites</a></td>
-                <td>&ldquo;Doing this exact route next month — thanks!&rdquo;</td>
-                <td>
+              <tr class="admin-table__row">
+                <td class="admin-table__cell">Lena</td>
+                <td class="admin-table__cell"><a href="post.html">Three days in the Dolomites</a></td>
+                <td class="admin-table__cell">&ldquo;Doing this exact route next month — thanks!&rdquo;</td>
+                <td class="admin-table__cell admin-table__cell--actions">
                   <button type="button" class="btn btn--small">Approve</button>
                   <button type="button" class="btn btn--danger btn--small">Delete</button>
                 </td>

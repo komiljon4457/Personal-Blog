@@ -1,0 +1,26 @@
+// =============================================================================
+// style.scss — main entry point
+// Compiles to prototype/css/style.css
+//
+// Architecture (7-1-ish, modularised):
+//   abstracts/  → variables, mixins, functions (emit no CSS)
+//   base/       → reset & typography
+//   components/ → reusable UI blocks (public + admin/BEM)
+// Layout lives in its own bundle: layout.scss → css/layout.css
+// =============================================================================
+
+// abstracts are @used inside each partial, so nothing to include here.
+
+// base
+@use "base/reset";
+@use "base/typography";
+
+// components — public branch
+@use "components/site-chrome";
+@use "components/buttons";
+@use "components/post-card";
+@use "components/forms";
+@use "components/comments";
+
+// components — admin branch (BEM)
+@use "components/admin";

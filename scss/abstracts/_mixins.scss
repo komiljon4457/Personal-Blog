@@ -1,0 +1,85 @@
+// =============================================================================
+// abstracts/_mixins.scss — reusable mixins & helper functions
+// =============================================================================
+
+@use "sass:map";
+@use "variables" as *;
+
+// ---- space(): read a value from the $spacers map ----------------------------
+// Usage: padding: space(3);  ->  padding: 1rem;
+@function space($key) {
+  @if not map.has-key($spacers, $key) {
+    @error "space(): '#{$key}' is not in the $spacers map.";
+  }
+  @return map.get($spacers, $key);
+}
+
+// ---- respond-to(): media-query mixin driven by the $breakpoints map ----------
+// Usage:
+//   @include respond-to("tablet") { … }  ->  @media (max-width: 820px) { … }
+@mixin respond-to($name) {
+  @if not map.has-key($breakpoints, $name) {
+    @error "respond-to(): '#{$name}' is not a known breakpoint.";
+  }
+  @media (max-width: map.get($breakpoints, $name)) {
+    @content;
+  }
+}
+
+// ---- card(): the shared "surface" look (panel, post card, comment, sidebar) --
+@mixin card {
+  background: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  box-shadow: $shadow;
+}
+
+// ---- button-variant(): generate a solid button colour scheme ----------------
+@mixin button-variant($bg, $bg-hover, $fg: #fff) {
+  background: $bg;
+  color: $fg;
+
+  &:hover {
+    background: $bg-hover;
+    text-decoration: none;
+  }
+}
+
+// ---- form-control(): shared input / textarea / select styling ---------------
+@mixin form-control {
+  width: 100%;
+  font-family: $font-ui;
+  font-size: 1rem;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  background: #fff;
+  color: $color-text;
+
+  &:focus {
+    outline: 2px solid $color-accent;
+    outline-offset: 1px;
+    border-color: $color-accent;
+  }
+}
+
+// ---- flex-between(): a common flex row ---------------------------------------
+@mixin flex-between($gap: space(3)) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: $gap;
+}
+
+// ---- visually-hidden(): hide visually but keep for screen readers -----------
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  border: 0;
+}

@@ -1,0 +1,7 @@
+// =============================================================================
+// abstracts/_index.scss — forwards the abstracts so consumers write a single
+// line:  @use "../abstracts" as *;
+// =============================================================================
+
+@forward "variables";
+@forward "mixins";

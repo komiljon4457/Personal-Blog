@@ -24,7 +24,8 @@
     </header>
 
     <main class="page">
-      <div class="layout-narrow">
+      <!-- BEM block: post-form -->
+      <div class="post-form">
         <nav class="breadcrumb" aria-label="Breadcrumb">
           <ol>
             <li><a href="admin.html">Dashboard</a></li>
@@ -32,20 +33,21 @@
           </ol>
         </nav>
 
-        <header class="page-intro">
+        <header class="post-form__intro">
           <h1>Create a new post</h1>
-          <p>Fields marked <span class="required-mark">*</span> are required.</p>
+          <p>Fields marked <span class="post-form__required">*</span> are required.</p>
         </header>
 
         <form action="admin.html" method="post">
-          <fieldset>
-            <legend>Content</legend>
+          <fieldset class="post-form__fieldset">
+            <legend class="post-form__legend">Content</legend>
 
-            <div class="form-row">
-              <label for="title"
-                >Title <span class="required-mark" aria-hidden="true">*</span></label
+            <div class="post-form__row">
+              <label class="post-form__label" for="title"
+                >Title <span class="post-form__required" aria-hidden="true">*</span></label
               >
               <input
+                class="post-form__control"
                 type="text"
                 id="title"
                 name="title"
@@ -56,11 +58,12 @@
               />
             </div>
 
-            <div class="form-row">
-              <label for="slug"
-                >URL slug <span class="required-mark" aria-hidden="true">*</span></label
+            <div class="post-form__row">
+              <label class="post-form__label" for="slug"
+                >URL slug <span class="post-form__required" aria-hidden="true">*</span></label
               >
               <input
+                class="post-form__control"
                 type="text"
                 id="slug"
                 name="slug"
@@ -69,48 +72,48 @@
                 maxlength="120"
                 placeholder="an-engaging-headline"
               />
-              <span class="hint">
+              <span class="post-form__hint">
                 Lower-case letters, numbers and hyphens only (e.g.
                 <code>my-first-post</code>).
               </span>
             </div>
 
-            <div class="form-row">
-              <label for="excerpt">Excerpt</label>
+            <div class="post-form__row">
+              <label class="post-form__label" for="excerpt">Excerpt</label>
               <textarea
+                class="post-form__control post-form__control--short"
                 id="excerpt"
                 name="excerpt"
                 maxlength="300"
                 placeholder="A short summary shown in listings (optional)."
-                style="min-height: 4rem"
               ></textarea>
-              <span class="hint">Up to 300 characters.</span>
+              <span class="post-form__hint">Up to 300 characters.</span>
             </div>
 
-            <div class="form-row">
-              <label for="body"
-                >Body <span class="required-mark" aria-hidden="true">*</span></label
+            <div class="post-form__row">
+              <label class="post-form__label" for="body"
+                >Body <span class="post-form__required" aria-hidden="true">*</span></label
               >
               <textarea
+                class="post-form__control post-form__control--tall"
                 id="body"
                 name="body"
                 required
                 minlength="20"
                 placeholder="Write your post here…"
-                style="min-height: 16rem"
               ></textarea>
             </div>
           </fieldset>
 
-          <fieldset>
-            <legend>Organisation</legend>
+          <fieldset class="post-form__fieldset">
+            <legend class="post-form__legend">Organisation</legend>
 
-            <div class="form-grid-2">
-              <div class="form-row">
-                <label for="category"
-                  >Category <span class="required-mark" aria-hidden="true">*</span></label
+            <div class="post-form__row post-form__row--split">
+              <div>
+                <label class="post-form__label" for="category"
+                  >Category <span class="post-form__required" aria-hidden="true">*</span></label
                 >
-                <select id="category" name="category" required>
+                <select class="post-form__control" id="category" name="category" required>
                   <option value="">— Choose a category —</option>
                   <option value="travel">Travel</option>
                   <option value="tech">Tech</option>
@@ -119,40 +122,48 @@
                 </select>
               </div>
 
-              <div class="form-row">
-                <label for="tags">Tags</label>
+              <div>
+                <label class="post-form__label" for="tags">Tags</label>
                 <input
+                  class="post-form__control"
                   type="text"
                   id="tags"
                   name="tags"
                   placeholder="hiking, italy, slow-travel"
                 />
-                <span class="hint">Comma-separated.</span>
+                <span class="post-form__hint">Comma-separated.</span>
               </div>
             </div>
 
-            <div class="form-grid-2">
-              <div class="form-row">
-                <label for="status"
-                  >Status <span class="required-mark" aria-hidden="true">*</span></label
+            <div class="post-form__row post-form__row--split">
+              <div>
+                <label class="post-form__label" for="status"
+                  >Status <span class="post-form__required" aria-hidden="true">*</span></label
                 >
-                <select id="status" name="status" required>
+                <select class="post-form__control" id="status" name="status" required>
                   <option value="draft">Draft</option>
                   <option value="published">Published</option>
                   <option value="archived">Archived</option>
                 </select>
               </div>
 
-              <div class="form-row">
-                <label for="publish-date">Publish date</label>
-                <input type="date" id="publish-date" name="publishDate" min="2020-01-01" />
-                <span class="hint">Leave empty to publish immediately.</span>
+              <div>
+                <label class="post-form__label" for="publish-date">Publish date</label>
+                <input
+                  class="post-form__control"
+                  type="date"
+                  id="publish-date"
+                  name="publishDate"
+                  min="2020-01-01"
+                />
+                <span class="post-form__hint">Leave empty to publish immediately.</span>
               </div>
             </div>
 
-            <div class="form-row">
-              <label for="cover">Cover image URL</label>
+            <div class="post-form__row">
+              <label class="post-form__label" for="cover">Cover image URL</label>
               <input
+                class="post-form__control"
                 type="url"
                 id="cover"
                 name="cover"
@@ -161,7 +172,7 @@
             </div>
           </fieldset>
 
-          <div class="form-actions">
+          <div class="post-form__actions">
             <button type="submit" class="btn">Save post</button>
             <a href="admin.html" class="btn btn--ghost">Cancel</a>
           </div>

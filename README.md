@@ -87,3 +87,16 @@ Post   * ──── * Category
 Post   * ──── * Tag
 Post   1 ──── * Comment
 ```
+
+---
+
+## Styling & Build (Step 2)
+
+- **Sass (whole prototype)** — modular `scss/` sources (variables, mixins, partials)
+  compile to the two `prototype/css/*.css` files the pages link. Uses Sass
+  **variables** (colours, spacing/breakpoint maps), **modularization** (abstracts /
+  base / components / layout partials) and **mixins** (`card`, `respond-to`,
+  `button-variant`, `form-control`, …).
+- **BEM (admin branch)** — `login.html`, `admin.html`, `post-editor.html` are written
+  with `block__element--modifier` classes (`auth`, `dashboard`, `admin-table`,
+  `post-form`, …) styled in [`scss/components/_admin.scss`](scss/components/_admin.scss).

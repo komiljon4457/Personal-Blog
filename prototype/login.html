@@ -25,21 +25,25 @@
     </header>
 
     <main class="page">
-      <div class="layout-narrow">
-        <header class="page-intro">
+      <!-- BEM block: auth -->
+      <div class="auth">
+        <header class="auth__intro">
           <h1>Author login</h1>
-          <p>This area is for the blog author. Readers don&rsquo;t need an account.</p>
+          <p class="auth__lead">
+            This area is for the blog author. Readers don&rsquo;t need an account.
+          </p>
         </header>
 
         <form action="admin.html" method="post">
-          <fieldset>
-            <legend>Sign in</legend>
+          <fieldset class="auth__fieldset">
+            <legend class="auth__legend">Sign in</legend>
 
-            <div class="form-row">
-              <label for="email"
-                >Email <span class="required-mark" aria-hidden="true">*</span></label
+            <div class="auth__field">
+              <label class="auth__label" for="email"
+                >Email <span class="auth__required" aria-hidden="true">*</span></label
               >
               <input
+                class="auth__control"
                 type="email"
                 id="email"
                 name="email"
@@ -49,11 +53,12 @@
               />
             </div>
 
-            <div class="form-row">
-              <label for="password"
-                >Password <span class="required-mark" aria-hidden="true">*</span></label
+            <div class="auth__field">
+              <label class="auth__label" for="password"
+                >Password <span class="auth__required" aria-hidden="true">*</span></label
               >
               <input
+                class="auth__control"
                 type="password"
                 id="password"
                 name="password"
@@ -61,18 +66,18 @@
                 minlength="8"
                 autocomplete="current-password"
               />
-              <span class="hint">At least 8 characters.</span>
+              <span class="auth__hint">At least 8 characters.</span>
             </div>
 
-            <div class="form-row">
-              <label>
-                <input type="checkbox" name="remember" style="width:auto" />
+            <div class="auth__field">
+              <label class="auth__checkbox">
+                <input class="auth__checkbox-input" type="checkbox" name="remember" />
                 Keep me signed in on this device
               </label>
             </div>
           </fieldset>
 
-          <div class="form-actions">
+          <div class="auth__actions">
             <button type="submit" class="btn">Log in</button>
             <a href="index.html" class="btn btn--ghost">Cancel</a>
           </div>

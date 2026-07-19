@@ -1,0 +1,56 @@
+// =============================================================================
+// components/_post-card.scss — post previews, meta line, tag/category pills
+// (public branch)
+// =============================================================================
+
+@use "../abstracts" as *;
+
+.post-card {
+  @include card;
+  padding: space(4);
+
+  & + & {
+    margin-top: space(4);
+  }
+
+  h2 {
+    margin-bottom: space(2);
+  }
+}
+
+.post-meta {
+  font-family: $font-ui;
+  font-size: 0.85rem;
+  color: $color-muted;
+  margin-bottom: space(3);
+
+  a {
+    color: $color-muted;
+  }
+}
+
+// ---- Tag / category pills ---------------------------------------------------
+.taxonomy {
+  display: flex;
+  flex-wrap: wrap;
+  gap: space(2);
+  list-style: none;
+  margin: space(3) 0 0;
+  padding: 0;
+}
+
+.pill {
+  display: inline-block;
+  font-family: $font-ui;
+  font-size: 0.78rem;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  background: $color-accent-soft;
+  color: $color-accent-dark;
+
+  &:hover {
+    background: $color-accent;
+    color: #fff;
+    text-decoration: none;
+  }
+}

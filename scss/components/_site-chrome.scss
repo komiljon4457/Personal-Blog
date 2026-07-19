@@ -1,0 +1,80 @@
+// =============================================================================
+// components/_site-chrome.scss — shared site header, nav and footer
+// (used by both the public and admin branches)
+// =============================================================================
+
+@use "../abstracts" as *;
+
+// ---- Site header ------------------------------------------------------------
+.site-header {
+  background: $color-surface;
+  border-bottom: 1px solid $color-border;
+
+  &__inner {
+    @include flex-between(space(3));
+    max-width: $container-max;
+    margin: 0 auto;
+    padding: space(3) space(4);
+  }
+}
+
+.site-title {
+  font-family: $font-ui;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0;
+
+  a {
+    color: $color-text;
+  }
+}
+
+// ---- Primary navigation -----------------------------------------------------
+.main-nav {
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: space(4);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-family: $font-ui;
+    font-size: 0.95rem;
+  }
+
+  a {
+    color: $color-muted;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+
+    &:hover,
+    &[aria-current="page"] {
+      color: $color-accent;
+      border-bottom-color: $color-accent;
+      text-decoration: none;
+    }
+  }
+}
+
+// ---- Footer -----------------------------------------------------------------
+.site-footer {
+  background: $color-text;
+  color: #d6d6d6;
+  font-family: $font-ui;
+  font-size: 0.9rem;
+  margin-top: space(6);
+
+  &__inner {
+    max-width: $container-max;
+    margin: 0 auto;
+    padding: space(5) space(4);
+    display: flex;
+    flex-wrap: wrap;
+    gap: space(4);
+    justify-content: space-between;
+  }
+
+  a {
+    color: #ffffff;
+  }
+}

@@ -1,0 +1,67 @@
+// =============================================================================
+// components/_forms.scss — generic form styling for the PUBLIC branch
+// (contact form, comment form). The admin branch uses its own BEM form blocks
+// in _admin.scss instead of these generic classes.
+// =============================================================================
+
+@use "../abstracts" as *;
+
+form fieldset {
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  padding: space(4);
+  margin: 0 0 space(4);
+}
+
+form legend {
+  font-family: $font-ui;
+  font-weight: 700;
+  padding: 0 space(2);
+}
+
+.form-row {
+  margin-bottom: space(3);
+
+  label {
+    display: block;
+    font-family: $font-ui;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: space(1);
+  }
+
+  .hint {
+    display: block;
+    font-family: $font-ui;
+    font-size: 0.8rem;
+    color: $color-muted;
+    margin-top: space(1);
+  }
+}
+
+input,
+textarea,
+select {
+  @include form-control;
+}
+
+// Native client-side validation feedback
+input:required:invalid,
+textarea:required:invalid {
+  border-color: #d8a7a3;
+}
+
+input:required:valid,
+textarea:required:valid {
+  border-color: #a7cbb6;
+}
+
+textarea {
+  min-height: 8rem;
+  resize: vertical;
+  font-family: $font-body;
+}
+
+.required-mark {
+  color: $color-danger;
+}

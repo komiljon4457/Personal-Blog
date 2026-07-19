@@ -1,0 +1,22 @@
+{
+  "name": "personal-blog",
+  "version": "1.0.0",
+  "description": "A personal blogging platform where a single author can publish articles, organise them by category and tag, and let readers respond through comments.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "sass": "sass scss/style.scss:prototype/css/style.css scss/layout.scss:prototype/css/layout.css --style=expanded",
+    "sass:build": "sass scss/style.scss:prototype/css/style.css scss/layout.scss:prototype/css/layout.css --style=compressed --no-source-map",
+    "sass:watch": "sass --watch scss/style.scss:prototype/css/style.css scss/layout.scss:prototype/css/layout.css",
+    "serve": "cd prototype && python3 -m http.server 8000"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "sass": "^1.101.0"
+  }
+}

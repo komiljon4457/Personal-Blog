@@ -1,0 +1,39 @@
+// =============================================================================
+// components/_buttons.scss — the .btn block (shared)
+// Already BEM-shaped: .btn is the block, --ghost / --danger / --small are
+// modifiers. Colour schemes are produced by the button-variant() mixin.
+// =============================================================================
+
+@use "sass:color";
+@use "../abstracts" as *;
+
+.btn {
+  display: inline-block;
+  font-family: $font-ui;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.55rem 1.1rem;
+  border-radius: $radius;
+  border: 1px solid transparent;
+  cursor: pointer;
+  @include button-variant($color-accent, $color-accent-dark);
+
+  &--ghost {
+    background: transparent;
+    color: $color-accent;
+    border-color: $color-accent;
+
+    &:hover {
+      background: $color-accent-soft;
+    }
+  }
+
+  &--danger {
+    @include button-variant($color-danger, color.adjust($color-danger, $lightness: -8%));
+  }
+
+  &--small {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.85rem;
+  }
+}

@@ -1,0 +1,258 @@
+// =============================================================================
+// components/_admin.scss — the ADMIN branch, written in strict BEM
+//
+// BEM = Block __ Element -- Modifier
+//   .block            an independent component            (.auth, .dashboard)
+//   .block__element   a part that only exists in a block  (.auth__field)
+//   .block--modifier  a variant of a block or element     (.post-form__row--split)
+//
+// Blocks in this file: auth · dashboard · admin-table · scroll-box · badge ·
+// post-form. The public branch keeps its own generic classes elsewhere.
+// =============================================================================
+
+@use "../abstracts" as *;
+
+// ---- Block: auth (login screen) ---------------------------------------------
+.auth {
+  max-width: 26rem;
+  margin: 0 auto;
+
+  &__intro {
+    margin-bottom: space(5);
+  }
+
+  &__lead {
+    color: $color-muted;
+  }
+
+  &__fieldset {
+    border: 1px solid $color-border;
+    border-radius: $radius;
+    padding: space(4);
+    margin: 0 0 space(4);
+  }
+
+  &__legend {
+    font-family: $font-ui;
+    font-weight: 700;
+    padding: 0 space(2);
+  }
+
+  &__field {
+    margin-bottom: space(3);
+  }
+
+  &__label {
+    display: block;
+    font-family: $font-ui;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: space(1);
+  }
+
+  &__control {
+    @include form-control;
+  }
+
+  &__hint {
+    display: block;
+    font-family: $font-ui;
+    font-size: 0.8rem;
+    color: $color-muted;
+    margin-top: space(1);
+  }
+
+  &__checkbox {
+    display: flex;
+    align-items: center;
+    gap: space(2);
+    font-family: $font-ui;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  &__checkbox-input {
+    width: auto;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: space(3);
+    margin-top: space(4);
+  }
+
+  &__required {
+    color: $color-danger;
+  }
+}
+
+// ---- Block: dashboard (post & comment overview) -----------------------------
+.dashboard {
+  &__intro {
+    margin-bottom: space(5);
+  }
+
+  &__summary {
+    color: $color-muted;
+  }
+
+  &__actions {
+    margin-top: space(3);
+  }
+
+  &__section {
+    margin-top: space(6);
+
+    &--first {
+      margin-top: 0;
+    }
+  }
+
+  &__section-title {
+    margin-bottom: space(3);
+  }
+}
+
+// ---- Block: scroll-box (horizontal scroll wrapper for tables on mobile) ------
+.scroll-box {
+  overflow-x: auto;
+}
+
+// ---- Block: admin-table -----------------------------------------------------
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  @include card;
+  overflow: hidden;
+  font-family: $font-ui;
+  font-size: 0.92rem;
+
+  &__caption {
+    text-align: left;
+    font-weight: 700;
+    padding: space(3);
+    color: $color-muted;
+  }
+
+  &__heading,
+  &__cell {
+    text-align: left;
+    padding: 0.7rem space(3);
+    border-bottom: 1px solid $color-border;
+  }
+
+  &__head &__heading {
+    background: $color-accent-soft;
+    color: $color-accent-dark;
+  }
+
+  &__row:hover &__cell {
+    background: #fafafa;
+  }
+
+  &__cell--actions {
+    white-space: nowrap;
+  }
+}
+
+// ---- Block: badge (status pill; already BEM-shaped) -------------------------
+.badge {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+
+  &--published {
+    background: #dff0e6;
+    color: #245740;
+  }
+
+  &--draft {
+    background: #f3e9cf;
+    color: #7a5b12;
+  }
+
+  &--archived {
+    background: #eaeaea;
+    color: #555;
+  }
+}
+
+// ---- Block: post-form (create / edit a post) --------------------------------
+.post-form {
+  max-width: $narrow-max;
+  margin: 0 auto;
+
+  &__intro {
+    margin-bottom: space(5);
+  }
+
+  &__fieldset {
+    border: 1px solid $color-border;
+    border-radius: $radius;
+    padding: space(4);
+    margin: 0 0 space(4);
+  }
+
+  &__legend {
+    font-family: $font-ui;
+    font-weight: 700;
+    padding: 0 space(2);
+  }
+
+  &__row {
+    margin-bottom: space(3);
+
+    // Modifier: two controls side by side, collapsing on small screens.
+    &--split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: space(3);
+
+      @include respond-to("phone") {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+
+  &__label {
+    display: block;
+    font-family: $font-ui;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: space(1);
+  }
+
+  &__required {
+    color: $color-danger;
+  }
+
+  &__control {
+    @include form-control;
+
+    // Element modifiers for textarea heights.
+    &--short { min-height: 4rem; }
+    &--tall  { min-height: 16rem; }
+  }
+
+  textarea#{&}__control {
+    resize: vertical;
+    font-family: $font-body;
+  }
+
+  &__hint {
+    display: block;
+    font-family: $font-ui;
+    font-size: 0.8rem;
+    color: $color-muted;
+    margin-top: space(1);
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: space(3);
+    margin-top: space(4);
+  }
+}

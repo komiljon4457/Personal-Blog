@@ -1,0 +1,41 @@
+// =============================================================================
+// base/_typography.scss — headings, text, links
+// =============================================================================
+
+@use "../abstracts" as *;
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: $font-ui;
+  line-height: 1.2;
+  color: $color-text;
+  margin: 0 0 space(3);
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.2rem; }
+
+p {
+  margin: 0 0 space(3);
+}
+
+a {
+  color: $color-accent;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+small {
+  color: $color-muted;
+}
+
+.visually-hidden {
+  @include visually-hidden;
+}

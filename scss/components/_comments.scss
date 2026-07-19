@@ -1,0 +1,21 @@
+// =============================================================================
+// components/_comments.scss — comment list on a post (public branch)
+// =============================================================================
+
+@use "../abstracts" as *;
+
+.comment {
+  @include card;
+  padding: space(3) space(4);
+
+  & + & {
+    margin-top: space(3);
+  }
+
+  &__meta {
+    font-family: $font-ui;
+    font-size: 0.85rem;
+    color: $color-muted;
+    margin-bottom: space(2);
+  }
+}
