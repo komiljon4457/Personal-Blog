@@ -1,0 +1,13 @@
+<header class="site-header">
+  <div class="site-header__inner">
+    <p class="site-title"><a href="/">Anna&rsquo;s Blog</a></p>
+    <nav class="main-nav" aria-label="Primary">
+      <ul>
+        <li><a href="/admin"<%= currentPath === "/admin" ? ' aria-current="page"' : "" %>>Dashboard</a></li>
+        <li><a href="/admin/posts/new"<%= currentPath === "/admin/posts/new" ? ' aria-current="page"' : "" %>>New post</a></li>
+        <li><a href="/">View site</a></li>
+        <li><a href="/login">Log out</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

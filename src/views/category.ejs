@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head', { title }) %>
+  <body>
+    <%- include('partials/site-header') %>
+
+    <main class="page">
+      <div class="layout-with-sidebar">
+        <div class="content">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <ol>
+              <li><a href="/">Home</a></li>
+              <li aria-current="page">Category: <%= category.name %></li>
+            </ol>
+          </nav>
+
+          <header class="page-intro">
+            <h1>Category: <%= category.name %></h1>
+            <% if (category.description) { %><p><%= category.description %></p><% } %>
+          </header>
+
+          <% if (posts.length === 0) { %>
+            <p>No published posts in this category yet.</p>
+          <% } %>
+
+          <% posts.forEach(function (post) { %>
+            <%- include('partials/post-card', { post }) %>
+          <% }) %>
+        </div>
+
+        <%- include('partials/sidebar', { sidebar }) %>
+      </div>
+    </main>
+
+    <%- include('partials/footer') %>
+  </body>
+</html>

@@ -220,6 +220,25 @@ small {
   text-decoration: none;
 }
 
+.notice {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 0.95rem;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #e2e2df;
+  margin: 0 0 1.5rem;
+}
+.notice--success {
+  background: #dff0e6;
+  border-color: #a7cbb6;
+  color: #245740;
+}
+.notice--error {
+  background: #fbeae9;
+  border-color: #d8a7a3;
+  color: #7a1c17;
+}
+
 form fieldset {
   border: 1px solid #e2e2df;
   border-radius: 8px;

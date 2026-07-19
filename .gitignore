@@ -3,3 +3,6 @@ node_modules/
 .DS_Store
 .sass-cache/
 prototype/css/*.css.map
+
+# Step 3 (Node backend)
+data/

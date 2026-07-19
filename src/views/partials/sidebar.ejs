@@ -1,0 +1,27 @@
+<aside class="sidebar" aria-label="Blog sidebar">
+  <section aria-labelledby="cats-heading">
+    <h2 id="cats-heading">Categories</h2>
+    <ul>
+      <% sidebar.categories.forEach(function (c) { %>
+      <li><a href="/category/<%= c.slug %>"><%= c.name %> (<%= c.post_count %>)</a></li>
+      <% }) %>
+    </ul>
+  </section>
+
+  <section aria-labelledby="tags-heading">
+    <h2 id="tags-heading">Popular tags</h2>
+    <ul class="taxonomy">
+      <% sidebar.tags.forEach(function (t) { %>
+      <li><a class="pill" href="/category/travel">#<%= t.slug %></a></li>
+      <% }) %>
+    </ul>
+  </section>
+
+  <section aria-labelledby="about-heading">
+    <h2 id="about-heading">About the author</h2>
+    <p>
+      Hi, I&rsquo;m Anna — a developer who likes mountains and good food.
+      <a href="/about">Read more &rarr;</a>
+    </p>
+  </section>
+</aside>

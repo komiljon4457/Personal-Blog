@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head', { title }) %>
+  <body>
+    <%- include('partials/site-header') %>
+
+    <main class="page">
+      <div class="layout-narrow">
+        <header class="page-intro">
+          <h1>Contact</h1>
+          <p>
+            Have a question, a correction, or a topic you&rsquo;d like me to write
+            about? Fields marked <span class="required-mark">*</span> are required.
+          </p>
+        </header>
+
+        <% if (sent) { %>
+        <p class="notice notice--success" role="status">
+          Thanks for your message — I&rsquo;ll get back to you by email.
+        </p>
+        <% } %>
+
+        <form action="/contact" method="post">
+          <fieldset>
+            <legend>Your details</legend>
+
+            <div class="form-grid-2">
+              <div class="form-row">
+                <label for="name">Full name <span class="required-mark" aria-hidden="true">*</span></label>
+                <input type="text" id="name" name="name" required minlength="2" maxlength="80"
+                       value="<%= formData.name || '' %>" autocomplete="name" placeholder="Anna Weber" />
+                <% if (formErrors.name) { %><span class="hint"><%= formErrors.name %></span><% } %>
+              </div>
+
+              <div class="form-row">
+                <label for="email">Email <span class="required-mark" aria-hidden="true">*</span></label>
+                <input type="email" id="email" name="email" required
+                       value="<%= formData.email || '' %>" autocomplete="email" placeholder="you@example.com" />
+                <% if (formErrors.email) { %><span class="hint"><%= formErrors.email %></span><% } %>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label for="website">Website</label>
+              <input type="url" id="website" name="website"
+                     value="<%= formData.website || '' %>" placeholder="https://example.com" />
+              <span class="hint">Optional. Must start with http:// or https://</span>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Your message</legend>
+
+            <div class="form-row">
+              <label for="subject">Subject <span class="required-mark" aria-hidden="true">*</span></label>
+              <select id="subject" name="subject" required>
+                <option value="">— Please choose —</option>
+                <% ["feedback","topic","collab","other"].forEach(function (v) {
+                     var labels = {feedback:"Feedback on a post", topic:"Topic suggestion", collab:"Collaboration", other:"Something else"}; %>
+                <option value="<%= v %>" <%= formData.subject === v ? "selected" : "" %>><%= labels[v] %></option>
+                <% }) %>
+              </select>
+              <% if (formErrors.subject) { %><span class="hint"><%= formErrors.subject %></span><% } %>
+            </div>
+
+            <div class="form-row">
+              <label for="message">Message <span class="required-mark" aria-hidden="true">*</span></label>
+              <textarea id="message" name="message" required minlength="10" maxlength="2000"
+                        placeholder="Write your message here…"><%= formData.message || '' %></textarea>
+              <% if (formErrors.message) { %><span class="hint"><%= formErrors.message %></span><% } %>
+              <span class="hint">Between 10 and 2000 characters.</span>
+            </div>
+
+            <div class="form-row">
+              <label>
+                <input type="checkbox" name="consent" value="yes" required style="width:auto"
+                       <%= formData.consent ? "checked" : "" %> />
+                I agree that my message may be stored so that Anna can reply.
+                <span class="required-mark" aria-hidden="true">*</span>
+              </label>
+              <% if (formErrors.consent) { %><span class="hint"><%= formErrors.consent %></span><% } %>
+            </div>
+          </fieldset>
+
+          <div class="form-actions">
+            <button type="submit" class="btn">Send message</button>
+            <button type="reset" class="btn btn--ghost">Reset</button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <%- include('partials/footer') %>
+  </body>
+</html>

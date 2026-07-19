@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head', { title }) %>
+  <body>
+    <%- include('partials/site-header') %>
+
+    <main class="page">
+      <div class="layout-with-sidebar">
+        <div class="content">
+          <header class="page-intro">
+            <h1>Latest posts</h1>
+            <p>Thoughts on travel, code, and the little things in between.</p>
+          </header>
+
+          <% if (posts.length === 0) { %>
+            <p>No posts published yet.</p>
+          <% } %>
+
+          <% posts.forEach(function (post) { %>
+            <%- include('partials/post-card', { post }) %>
+          <% }) %>
+        </div>
+
+        <%- include('partials/sidebar', { sidebar }) %>
+      </div>
+    </main>
+
+    <%- include('partials/footer') %>
+  </body>
+</html>

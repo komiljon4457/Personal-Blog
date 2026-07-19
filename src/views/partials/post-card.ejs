@@ -1,0 +1,20 @@
+<article class="post-card">
+  <h2><a href="/posts/<%= post.slug %>"><%= post.title %></a></h2>
+  <p class="post-meta">
+    <time datetime="<%= isoDate(post.published_at) %>"><%= formatDate(post.published_at) %></time>
+    · by <a href="/about"><%= post.author_name %></a>
+    <% if (post.categories && post.categories.length) { %>
+      · in
+      <% post.categories.forEach(function (c, i) { %><a href="/category/<%= c.slug %>"><%= c.name %></a><%= i < post.categories.length - 1 ? ", " : "" %><% }) %>
+    <% } %>
+  </p>
+  <% if (post.excerpt) { %><p><%= post.excerpt %></p><% } %>
+  <p><a href="/posts/<%= post.slug %>" class="btn btn--ghost btn--small">Read more</a></p>
+  <% if (post.tags && post.tags.length) { %>
+  <ul class="taxonomy" aria-label="Tags">
+    <% post.tags.forEach(function (t) { %>
+    <li><a class="pill" href="/category/travel">#<%= t.slug %></a></li>
+    <% }) %>
+  </ul>
+  <% } %>
+</article>

@@ -1,0 +1,26 @@
+// =============================================================================
+// components/_notice.scss — inline status / error banners
+// =============================================================================
+
+@use "../abstracts" as *;
+
+.notice {
+  font-family: $font-ui;
+  font-size: 0.95rem;
+  padding: space(3) space(4);
+  border-radius: $radius;
+  border: 1px solid $color-border;
+  margin: 0 0 space(4);
+
+  &--success {
+    background: #dff0e6;
+    border-color: #a7cbb6;
+    color: #245740;
+  }
+
+  &--error {
+    background: #fbeae9;
+    border-color: #d8a7a3;
+    color: #7a1c17;
+  }
+}

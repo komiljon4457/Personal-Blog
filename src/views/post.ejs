@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head', { title }) %>
+  <body>
+    <%- include('partials/site-header') %>
+
+    <main class="page">
+      <div class="layout-narrow">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="/">Home</a></li>
+            <% if (post.categories && post.categories.length) { %>
+            <li><a href="/category/<%= post.categories[0].slug %>"><%= post.categories[0].name %></a></li>
+            <% } %>
+            <li aria-current="page"><%= post.title %></li>
+          </ol>
+        </nav>
+
+        <article>
+          <header>
+            <h1><%= post.title %></h1>
+            <p class="post-meta">
+              <time datetime="<%= isoDate(post.published_at) %>"><%= formatDate(post.published_at) %></time>
+              · by <a href="/about"><%= post.author_name %></a>
+              <% if (post.categories && post.categories.length) { %>
+                · in <a href="/category/<%= post.categories[0].slug %>"><%= post.categories[0].name %></a>
+              <% } %>
+            </p>
+          </header>
+
+          <div class="article-body">
+            <%- paragraphs(post.content) %>
+          </div>
+
+          <% if (post.tags && post.tags.length) { %>
+          <ul class="taxonomy" aria-label="Tags">
+            <% post.tags.forEach(function (t) { %>
+            <li><a class="pill" href="/category/<%= post.categories[0] ? post.categories[0].slug : 'travel' %>">#<%= t.slug %></a></li>
+            <% }) %>
+          </ul>
+          <% } %>
+        </article>
+
+        <section aria-labelledby="comments-heading" id="comments">
+          <h2 id="comments-heading">Comments (<%= post.commentCount %>)</h2>
+
+          <% if (typeof commentReceived !== "undefined" && commentReceived) { %>
+          <p class="notice notice--success" role="status">
+            Thanks! Your comment was submitted and will appear once approved.
+          </p>
+          <% } %>
+
+          <% post.comments.forEach(function (c) { %>
+          <article class="comment">
+            <p class="comment__meta">
+              <strong><%= c.author_name %></strong> ·
+              <time datetime="<%= isoDate(c.created_at) %>"><%= formatDate(c.created_at) %></time>
+            </p>
+            <p><%= c.content %></p>
+          </article>
+          <% }) %>
+
+          <% if (post.comments.length === 0) { %>
+          <p>No comments yet. Be the first!</p>
+          <% } %>
+
+          <h3>Leave a comment</h3>
+          <p><small>Comments are moderated and appear after approval.</small></p>
+
+          <form action="/posts/<%= post.slug %>/comments" method="post">
+            <fieldset>
+              <legend>Your comment</legend>
+
+              <div class="form-grid-2">
+                <div class="form-row">
+                  <label for="c-name">Name <span class="required-mark" aria-hidden="true">*</span></label>
+                  <input type="text" id="c-name" name="name" required minlength="2" maxlength="60"
+                         value="<%= (formData && formData.name) || '' %>" autocomplete="name" />
+                  <% if (formErrors && formErrors.name) { %><span class="hint"><%= formErrors.name %></span><% } %>
+                </div>
+
+                <div class="form-row">
+                  <label for="c-email">Email <span class="required-mark" aria-hidden="true">*</span></label>
+                  <input type="email" id="c-email" name="email" required
+                         value="<%= (formData && formData.email) || '' %>" autocomplete="email" />
+                  <% if (formErrors && formErrors.email) { %><span class="hint"><%= formErrors.email %></span><% } %>
+                  <span class="hint">Not published — used only to notify you of replies.</span>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <label for="c-body">Comment <span class="required-mark" aria-hidden="true">*</span></label>
+                <textarea id="c-body" name="comment" required minlength="5" maxlength="1000"><%= (formData && formData.comment) || '' %></textarea>
+                <% if (formErrors && formErrors.comment) { %><span class="hint"><%= formErrors.comment %></span><% } %>
+              </div>
+            </fieldset>
+
+            <div class="form-actions">
+              <button type="submit" class="btn">Post comment</button>
+              <button type="reset" class="btn btn--ghost">Clear</button>
+            </div>
+          </form>
+        </section>
+      </div>
+    </main>
+
+    <%- include('partials/footer') %>
+  </body>
+</html>

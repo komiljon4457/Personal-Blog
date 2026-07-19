@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head', { title, noindex: true }) %>
+  <body>
+    <%- include('../partials/admin-header') %>
+
+    <!-- BEM block: dashboard -->
+    <main class="page dashboard">
+      <header class="dashboard__intro">
+        <h1>Dashboard</h1>
+        <p class="dashboard__summary">
+          Welcome back, Anna. You have <strong><%= stats.published %> published</strong>
+          post<%= stats.published === 1 ? "" : "s" %>, <%= stats.draft %> draft<%= stats.draft === 1 ? "" : "s" %>,
+          and <%= stats.pendingComments %> comment<%= stats.pendingComments === 1 ? "" : "s" %> awaiting moderation.
+        </p>
+        <p class="dashboard__actions">
+          <a href="/admin/posts/new" class="btn">+ New post</a>
+        </p>
+      </header>
+
+      <section class="dashboard__section dashboard__section--first" aria-labelledby="posts-heading">
+        <h2 class="dashboard__section-title" id="posts-heading">Your posts</h2>
+        <div class="scroll-box">
+          <table class="admin-table">
+            <caption class="admin-table__caption">All posts, most recent first</caption>
+            <thead class="admin-table__head">
+              <tr class="admin-table__row">
+                <th class="admin-table__heading" scope="col">Title</th>
+                <th class="admin-table__heading" scope="col">Category</th>
+                <th class="admin-table__heading" scope="col">Status</th>
+                <th class="admin-table__heading" scope="col">Published</th>
+                <th class="admin-table__heading" scope="col">Comments</th>
+                <th class="admin-table__heading" scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% posts.forEach(function (p) { %>
+              <tr class="admin-table__row">
+                <td class="admin-table__cell">
+                  <% if (p.status === "published") { %>
+                  <a href="/posts/<%= p.slug %>"><%= p.title %></a>
+                  <% } else { %>
+                  <a href="/admin/posts/<%= p.id %>/edit"><%= p.title %></a>
+                  <% } %>
+                </td>
+                <td class="admin-table__cell"><%= p.categories.map(function(c){return c.name}).join(", ") || "—" %></td>
+                <td class="admin-table__cell">
+                  <span class="badge badge--<%= p.status %>"><%= p.status.charAt(0).toUpperCase() + p.status.slice(1) %></span>
+                </td>
+                <td class="admin-table__cell">
+                  <% if (p.published_at) { %><time datetime="<%= isoDate(p.published_at) %>"><%= formatDate(p.published_at) %></time><% } else { %>&mdash;<% } %>
+                </td>
+                <td class="admin-table__cell"><%= p.commentCount %></td>
+                <td class="admin-table__cell admin-table__cell--actions">
+                  <a href="/admin/posts/<%= p.id %>/edit" class="btn btn--ghost btn--small">Edit</a>
+                  <form action="/admin/posts/<%= p.id %>/delete" method="post" style="display:inline"
+                        onsubmit="return confirm('Delete this post? This cannot be undone.');">
+                    <button type="submit" class="btn btn--danger btn--small">Delete</button>
+                  </form>
+                </td>
+              </tr>
+              <% }) %>
+              <% if (posts.length === 0) { %>
+              <tr class="admin-table__row"><td class="admin-table__cell" colspan="6">No posts yet.</td></tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="dashboard__section" aria-labelledby="mod-heading" id="comments">
+        <h2 class="dashboard__section-title" id="mod-heading">Comments awaiting moderation</h2>
+        <div class="scroll-box">
+          <table class="admin-table">
+            <caption class="admin-table__caption">Pending comments</caption>
+            <thead class="admin-table__head">
+              <tr class="admin-table__row">
+                <th class="admin-table__heading" scope="col">Author</th>
+                <th class="admin-table__heading" scope="col">On post</th>
+                <th class="admin-table__heading" scope="col">Excerpt</th>
+                <th class="admin-table__heading" scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% pendingComments.forEach(function (c) { %>
+              <tr class="admin-table__row">
+                <td class="admin-table__cell"><%= c.author_name %></td>
+                <td class="admin-table__cell"><a href="/posts/<%= c.post_slug %>"><%= c.post_title %></a></td>
+                <td class="admin-table__cell"><%= c.content.length > 60 ? c.content.slice(0, 60) + "…" : c.content %></td>
+                <td class="admin-table__cell admin-table__cell--actions">
+                  <form action="/admin/comments/<%= c.id %>/approve" method="post" style="display:inline">
+                    <button type="submit" class="btn btn--small">Approve</button>
+                  </form>
+                  <form action="/admin/comments/<%= c.id %>/delete" method="post" style="display:inline"
+                        onsubmit="return confirm('Delete this comment?');">
+                    <button type="submit" class="btn btn--danger btn--small">Delete</button>
+                  </form>
+                </td>
+              </tr>
+              <% }) %>
+              <% if (pendingComments.length === 0) { %>
+              <tr class="admin-table__row"><td class="admin-table__cell" colspan="4">No comments awaiting moderation.</td></tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <%- include('../partials/footer') %>
+  </body>
+</html>

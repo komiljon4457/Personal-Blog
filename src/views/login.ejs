@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head', { title, noindex: true }) %>
+  <body>
+    <%- include('partials/site-header') %>
+
+    <main class="page">
+      <!-- BEM block: auth -->
+      <div class="auth">
+        <header class="auth__intro">
+          <h1>Author login</h1>
+          <p class="auth__lead">
+            Authentication is stubbed in this step — submitting takes you straight to
+            the dashboard.
+          </p>
+        </header>
+
+        <form action="/login" method="post">
+          <fieldset class="auth__fieldset">
+            <legend class="auth__legend">Sign in</legend>
+
+            <div class="auth__field">
+              <label class="auth__label" for="email">Email</label>
+              <input class="auth__control" type="email" id="email" name="email"
+                     autocomplete="username" placeholder="anna@example.com" />
+            </div>
+
+            <div class="auth__field">
+              <label class="auth__label" for="password">Password</label>
+              <input class="auth__control" type="password" id="password" name="password"
+                     autocomplete="current-password" />
+              <span class="auth__hint">Not checked yet (stub).</span>
+            </div>
+
+            <div class="auth__field">
+              <label class="auth__checkbox">
+                <input class="auth__checkbox-input" type="checkbox" name="remember" />
+                Keep me signed in on this device
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="auth__actions">
+            <button type="submit" class="btn">Log in</button>
+            <a href="/" class="btn btn--ghost">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <%- include('partials/footer') %>
+  </body>
+</html>

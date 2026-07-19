@@ -10,7 +10,11 @@
     "sass": "sass scss/style.scss:prototype/css/style.css scss/layout.scss:prototype/css/layout.css --style=expanded",
     "sass:build": "sass scss/style.scss:prototype/css/style.css scss/layout.scss:prototype/css/layout.css --style=compressed --no-source-map",
     "sass:watch": "sass --watch scss/style.scss:prototype/css/style.css scss/layout.scss:prototype/css/layout.css",
-    "serve": "cd prototype && python3 -m http.server 8000"
+    "serve": "cd prototype && python3 -m http.server 8000",
+    "db:migrate": "node src/db/migrate.js",
+    "db:seed": "node src/db/seed.js",
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
   },
   "keywords": [],
   "author": "",
@@ -18,5 +22,12 @@
   "type": "commonjs",
   "devDependencies": {
     "sass": "^1.101.0"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.11.1",
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
+    "graphql": "^16.14.2",
+    "graphql-yoga": "^5.21.2"
   }
 }

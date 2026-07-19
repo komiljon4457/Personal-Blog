@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head', { title, noindex: true }) %>
+  <body>
+    <%- include('../partials/admin-header') %>
+
+    <main class="page">
+      <!-- BEM block: post-form -->
+      <div class="post-form">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="/admin">Dashboard</a></li>
+            <li aria-current="page"><%= mode === "edit" ? "Edit post" : "New post" %></li>
+          </ol>
+        </nav>
+
+        <header class="post-form__intro">
+          <h1><%= mode === "edit" ? "Edit post" : "Create a new post" %></h1>
+          <p>Fields marked <span class="post-form__required">*</span> are required.</p>
+        </header>
+
+        <% if (Object.keys(formErrors).length) { %>
+        <p class="notice notice--error" role="alert">Please fix the errors below.</p>
+        <% } %>
+
+        <form action="<%= action %>" method="post">
+          <fieldset class="post-form__fieldset">
+            <legend class="post-form__legend">Content</legend>
+
+            <div class="post-form__row">
+              <label class="post-form__label" for="title">Title <span class="post-form__required" aria-hidden="true">*</span></label>
+              <input class="post-form__control" type="text" id="title" name="title" required minlength="3" maxlength="120"
+                     value="<%= post.title || '' %>" placeholder="An engaging headline" />
+              <% if (formErrors.title) { %><span class="post-form__hint"><%= formErrors.title %></span><% } %>
+            </div>
+
+            <div class="post-form__row">
+              <label class="post-form__label" for="slug">URL slug</label>
+              <input class="post-form__control" type="text" id="slug" name="slug"
+                     pattern="[a-z0-9]+(?:-[a-z0-9]+)*" maxlength="120"
+                     value="<%= post.slug || '' %>" placeholder="auto-generated from the title if left blank" />
+              <span class="post-form__hint">Lower-case letters, numbers and hyphens. Leave blank to auto-generate.</span>
+            </div>
+
+            <div class="post-form__row">
+              <label class="post-form__label" for="excerpt">Excerpt</label>
+              <textarea class="post-form__control post-form__control--short" id="excerpt" name="excerpt" maxlength="300"
+                        placeholder="A short summary shown in listings (optional)."><%= post.excerpt || '' %></textarea>
+              <span class="post-form__hint">Up to 300 characters.</span>
+            </div>
+
+            <div class="post-form__row">
+              <label class="post-form__label" for="content">Body <span class="post-form__required" aria-hidden="true">*</span></label>
+              <textarea class="post-form__control post-form__control--tall" id="content" name="content" required minlength="20"
+                        placeholder="Write your post here…"><%= post.content || '' %></textarea>
+              <% if (formErrors.content) { %><span class="post-form__hint"><%= formErrors.content %></span><% } %>
+            </div>
+          </fieldset>
+
+          <fieldset class="post-form__fieldset">
+            <legend class="post-form__legend">Organisation</legend>
+
+            <div class="post-form__row post-form__row--split">
+              <div>
+                <label class="post-form__label" for="category">Category</label>
+                <select class="post-form__control" id="category" name="category">
+                  <option value="">— Choose a category —</option>
+                  <% categories.forEach(function (c) { %>
+                  <option value="<%= c.id %>" <%= (post.categoryIds || []).includes(c.id) ? "selected" : "" %>><%= c.name %></option>
+                  <% }) %>
+                </select>
+              </div>
+
+              <div>
+                <label class="post-form__label" for="tags">Tags</label>
+                <input class="post-form__control" type="text" id="tags" name="tags"
+                       value="<%= post.tagsCsv || '' %>" placeholder="hiking, italy, slow-travel" />
+                <span class="post-form__hint">Comma-separated. New tags are created automatically.</span>
+              </div>
+            </div>
+
+            <div class="post-form__row post-form__row--split">
+              <div>
+                <label class="post-form__label" for="status">Status <span class="post-form__required" aria-hidden="true">*</span></label>
+                <select class="post-form__control" id="status" name="status" required>
+                  <% ["draft","published","archived"].forEach(function (s) { %>
+                  <option value="<%= s %>" <%= post.status === s ? "selected" : "" %>><%= s.charAt(0).toUpperCase() + s.slice(1) %></option>
+                  <% }) %>
+                </select>
+              </div>
+
+              <div>
+                <label class="post-form__label" for="publish-date">Publish date</label>
+                <input class="post-form__control" type="date" id="publish-date" name="publishDate" min="2020-01-01"
+                       value="<%= post.published_at ? isoDate(post.published_at) : '' %>" />
+                <span class="post-form__hint">Used when status is “Published”. Blank = now.</span>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="post-form__actions">
+            <button type="submit" class="btn"><%= mode === "edit" ? "Save changes" : "Save post" %></button>
+            <a href="/admin" class="btn btn--ghost">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <%- include('../partials/footer') %>
+  </body>
+</html>
