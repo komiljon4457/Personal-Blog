@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact — Anna's Blog</title>
+    <meta name="description" content="Get in touch with Anna Weber." />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <p class="site-title"><a href="index.html">Anna&rsquo;s Blog</a></p>
+        <nav class="main-nav" aria-label="Primary">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="category.html">Categories</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html" aria-current="page">Contact</a></li>
+            <li><a href="login.html">Log in</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page">
+      <div class="layout-narrow">
+        <header class="page-intro">
+          <h1>Contact</h1>
+          <p>
+            Have a question, a correction, or a topic you&rsquo;d like me to write
+            about? Send a message below. Fields marked
+            <span class="required-mark">*</span> are required.
+          </p>
+        </header>
+
+        <form action="#" method="post">
+          <fieldset>
+            <legend>Your details</legend>
+
+            <div class="form-grid-2">
+              <div class="form-row">
+                <label for="name"
+                  >Full name <span class="required-mark" aria-hidden="true">*</span></label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  minlength="2"
+                  maxlength="80"
+                  autocomplete="name"
+                  placeholder="Anna Weber"
+                />
+              </div>
+
+              <div class="form-row">
+                <label for="email"
+                  >Email <span class="required-mark" aria-hidden="true">*</span></label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  autocomplete="email"
+                  placeholder="you@example.com"
+                />
+                <span class="hint">I&rsquo;ll only use this to reply.</span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label for="website">Website</label>
+              <input
+                type="url"
+                id="website"
+                name="website"
+                placeholder="https://example.com"
+              />
+              <span class="hint">Optional. Must start with http:// or https://</span>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Your message</legend>
+
+            <div class="form-row">
+              <label for="subject"
+                >Subject <span class="required-mark" aria-hidden="true">*</span></label
+              >
+              <select id="subject" name="subject" required>
+                <option value="">— Please choose —</option>
+                <option value="feedback">Feedback on a post</option>
+                <option value="topic">Topic suggestion</option>
+                <option value="collab">Collaboration</option>
+                <option value="other">Something else</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <label for="message"
+                >Message <span class="required-mark" aria-hidden="true">*</span></label
+              >
+              <textarea
+                id="message"
+                name="message"
+                required
+                minlength="10"
+                maxlength="2000"
+                placeholder="Write your message here…"
+              ></textarea>
+              <span class="hint">Between 10 and 2000 characters.</span>
+            </div>
+
+            <div class="form-row">
+              <label>
+                <input type="checkbox" name="consent" required style="width:auto" />
+                I agree that my message may be stored so that Anna can reply.
+                <span class="required-mark" aria-hidden="true">*</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="form-actions">
+            <button type="submit" class="btn">Send message</button>
+            <button type="reset" class="btn btn--ghost">Reset</button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <p>&copy; 2026 Anna Weber. Built as a semantic HTML/CSS prototype.</p>
+        <nav aria-label="Footer">
+          <a href="about.html">About</a> · <a href="contact.html">Contact</a> ·
+          <a href="login.html">Author login</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

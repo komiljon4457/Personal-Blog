@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home — Anna's Blog</title>
+    <meta
+      name="description"
+      content="Personal blog of Anna Weber — writing about travel, tech, and everyday life."
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <p class="site-title"><a href="index.html">Anna&rsquo;s Blog</a></p>
+        <nav class="main-nav" aria-label="Primary">
+          <ul>
+            <li><a href="index.html" aria-current="page">Home</a></li>
+            <li><a href="category.html">Categories</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html">Log in</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page">
+      <div class="layout-with-sidebar">
+        <div class="content">
+          <header class="page-intro">
+            <h1>Latest posts</h1>
+            <p>Thoughts on travel, code, and the little things in between.</p>
+          </header>
+
+          <article class="post-card">
+            <h2>
+              <a href="post.html">Three days in the Dolomites without a car</a>
+            </h2>
+            <p class="post-meta">
+              <time datetime="2026-07-12">12 July 2026</time> · by
+              <a href="about.html">Anna Weber</a> · in
+              <a href="category.html">Travel</a>
+            </p>
+            <p>
+              Public transport in the Italian Alps is better than its reputation.
+              Here is how I planned a three-day hut-to-hut route using only buses,
+              cable cars, and my own two feet.
+            </p>
+            <p><a href="post.html" class="btn btn--ghost btn--small">Read more</a></p>
+            <ul class="taxonomy" aria-label="Tags">
+              <li><a class="pill" href="category.html">#hiking</a></li>
+              <li><a class="pill" href="category.html">#italy</a></li>
+              <li><a class="pill" href="category.html">#slow-travel</a></li>
+            </ul>
+          </article>
+
+          <article class="post-card">
+            <h2>
+              <a href="post.html">Why I moved my blog to plain HTML and CSS</a>
+            </h2>
+            <p class="post-meta">
+              <time datetime="2026-06-30">30 June 2026</time> · by
+              <a href="about.html">Anna Weber</a> · in
+              <a href="category.html">Tech</a>
+            </p>
+            <p>
+              After years of wrestling with heavyweight tooling, I stripped my site
+              back to semantic HTML and a single stylesheet. It loads instantly and
+              I actually understand every line again.
+            </p>
+            <p><a href="post.html" class="btn btn--ghost btn--small">Read more</a></p>
+            <ul class="taxonomy" aria-label="Tags">
+              <li><a class="pill" href="category.html">#webdev</a></li>
+              <li><a class="pill" href="category.html">#minimalism</a></li>
+            </ul>
+          </article>
+
+          <article class="post-card">
+            <h2><a href="post.html">A slow-cooked lentil stew for grey days</a></h2>
+            <p class="post-meta">
+              <time datetime="2026-06-18">18 June 2026</time> · by
+              <a href="about.html">Anna Weber</a> · in
+              <a href="category.html">Food</a>
+            </p>
+            <p>
+              Comfort in a bowl. This is the one-pot recipe I come back to whenever
+              the weather turns and I want the kitchen to smell like home.
+            </p>
+            <p><a href="post.html" class="btn btn--ghost btn--small">Read more</a></p>
+            <ul class="taxonomy" aria-label="Tags">
+              <li><a class="pill" href="category.html">#recipes</a></li>
+              <li><a class="pill" href="category.html">#vegetarian</a></li>
+            </ul>
+          </article>
+        </div>
+
+        <aside class="sidebar" aria-label="Blog sidebar">
+          <section aria-labelledby="cats-heading">
+            <h2 id="cats-heading">Categories</h2>
+            <ul>
+              <li><a href="category.html">Travel (12)</a></li>
+              <li><a href="category.html">Tech (8)</a></li>
+              <li><a href="category.html">Food (5)</a></li>
+              <li><a href="category.html">Life (9)</a></li>
+            </ul>
+          </section>
+
+          <section aria-labelledby="tags-heading">
+            <h2 id="tags-heading">Popular tags</h2>
+            <ul class="taxonomy">
+              <li><a class="pill" href="category.html">#hiking</a></li>
+              <li><a class="pill" href="category.html">#webdev</a></li>
+              <li><a class="pill" href="category.html">#recipes</a></li>
+              <li><a class="pill" href="category.html">#berlin</a></li>
+            </ul>
+          </section>
+
+          <section aria-labelledby="about-heading">
+            <h2 id="about-heading">About the author</h2>
+            <p>
+              Hi, I&rsquo;m Anna — a developer who likes mountains and good food.
+              <a href="about.html">Read more &rarr;</a>
+            </p>
+          </section>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <p>&copy; 2026 Anna Weber. Built as a semantic HTML/CSS prototype.</p>
+        <nav aria-label="Footer">
+          <a href="about.html">About</a> · <a href="contact.html">Contact</a> ·
+          <a href="login.html">Author login</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

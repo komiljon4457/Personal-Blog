@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard — Anna's Blog</title>
+    <meta name="robots" content="noindex" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <p class="site-title"><a href="index.html">Anna&rsquo;s Blog</a></p>
+        <nav class="main-nav" aria-label="Primary">
+          <ul>
+            <li><a href="admin.html" aria-current="page">Dashboard</a></li>
+            <li><a href="post-editor.html">New post</a></li>
+            <li><a href="index.html">View site</a></li>
+            <li><a href="login.html">Log out</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page">
+      <header class="page-intro">
+        <h1>Dashboard</h1>
+        <p>
+          Welcome back, Anna. You have <strong>3 published</strong> posts, 1 draft,
+          and 2 comments awaiting moderation.
+        </p>
+        <p><a href="post-editor.html" class="btn">+ New post</a></p>
+      </header>
+
+      <section aria-labelledby="posts-heading">
+        <h2 id="posts-heading">Your posts</h2>
+        <div class="table-scroll">
+          <table class="data-table">
+            <caption>
+              All posts, most recent first
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Category</th>
+                <th scope="col">Status</th>
+                <th scope="col">Published</th>
+                <th scope="col">Comments</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="post.html">Three days in the Dolomites without a car</a></td>
+                <td>Travel</td>
+                <td><span class="badge badge--published">Published</span></td>
+                <td><time datetime="2026-07-12">12 Jul 2026</time></td>
+                <td>2</td>
+                <td>
+                  <a href="post-editor.html" class="btn btn--ghost btn--small">Edit</a>
+                  <button type="button" class="btn btn--danger btn--small">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td><a href="post.html">Why I moved my blog to plain HTML and CSS</a></td>
+                <td>Tech</td>
+                <td><span class="badge badge--published">Published</span></td>
+                <td><time datetime="2026-06-30">30 Jun 2026</time></td>
+                <td>5</td>
+                <td>
+                  <a href="post-editor.html" class="btn btn--ghost btn--small">Edit</a>
+                  <button type="button" class="btn btn--danger btn--small">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td><a href="post.html">A slow-cooked lentil stew for grey days</a></td>
+                <td>Food</td>
+                <td><span class="badge badge--published">Published</span></td>
+                <td><time datetime="2026-06-18">18 Jun 2026</time></td>
+                <td>1</td>
+                <td>
+                  <a href="post-editor.html" class="btn btn--ghost btn--small">Edit</a>
+                  <button type="button" class="btn btn--danger btn--small">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td><a href="post-editor.html">Notes on the Berlin S-Bahn (untitled)</a></td>
+                <td>Travel</td>
+                <td><span class="badge badge--draft">Draft</span></td>
+                <td>&mdash;</td>
+                <td>0</td>
+                <td>
+                  <a href="post-editor.html" class="btn btn--ghost btn--small">Edit</a>
+                  <button type="button" class="btn btn--danger btn--small">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section aria-labelledby="mod-heading" style="margin-top: var(--space-6)">
+        <h2 id="mod-heading">Comments awaiting moderation</h2>
+        <div class="table-scroll">
+          <table class="data-table">
+            <caption>
+              Pending comments
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Author</th>
+                <th scope="col">On post</th>
+                <th scope="col">Excerpt</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Marco</td>
+                <td><a href="post.html">Three days in the Dolomites</a></td>
+                <td>&ldquo;Which app did you use to check the bus times?&rdquo;</td>
+                <td>
+                  <button type="button" class="btn btn--small">Approve</button>
+                  <button type="button" class="btn btn--danger btn--small">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td>Lena</td>
+                <td><a href="post.html">Three days in the Dolomites</a></td>
+                <td>&ldquo;Doing this exact route next month — thanks!&rdquo;</td>
+                <td>
+                  <button type="button" class="btn btn--small">Approve</button>
+                  <button type="button" class="btn btn--danger btn--small">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <p>&copy; 2026 Anna Weber. Admin area — semantic HTML/CSS prototype.</p>
+        <nav aria-label="Footer">
+          <a href="index.html">View site</a> · <a href="login.html">Log out</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

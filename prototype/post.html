@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Three days in the Dolomites without a car — Anna's Blog</title>
+    <meta
+      name="description"
+      content="Planning a three-day hut-to-hut hike in the Dolomites using only public transport."
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <p class="site-title"><a href="index.html">Anna&rsquo;s Blog</a></p>
+        <nav class="main-nav" aria-label="Primary">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="category.html">Categories</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html">Log in</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page">
+      <div class="layout-narrow">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="category.html">Travel</a></li>
+            <li aria-current="page">Three days in the Dolomites</li>
+          </ol>
+        </nav>
+
+        <article>
+          <header>
+            <h1>Three days in the Dolomites without a car</h1>
+            <p class="post-meta">
+              <time datetime="2026-07-12">12 July 2026</time> · by
+              <a href="about.html">Anna Weber</a> · in
+              <a href="category.html">Travel</a> · 6 min read
+            </p>
+          </header>
+
+          <figure class="article-hero">
+            <img
+              src="assets/dolomites.svg"
+              alt="Jagged limestone peaks of the Dolomites at sunrise"
+              width="1200"
+              height="600"
+            />
+            <figcaption>Sunrise over the Tre Cime di Lavaredo.</figcaption>
+          </figure>
+
+          <div class="article-body">
+            <p>
+              Public transport in the Italian Alps is better than its reputation. Over
+              a long weekend I linked together three mountain huts using nothing but
+              regional buses, a cable car, and my own two feet — and never once wished
+              for a car.
+            </p>
+            <h2>Day one: getting to the trailhead</h2>
+            <p>
+              From Dobbiaco station, the 445 bus runs hourly up to the Auronzo hut. I
+              bought the ticket on board, watched the valley fall away below, and was
+              walking on the ridge by early afternoon.
+            </p>
+            <h2>Day two: the high traverse</h2>
+            <p>
+              This was the long day — nine hours across scree and past the old
+              wartime tunnels. The huts along the way meant I could travel light and
+              still eat well every evening.
+            </p>
+            <h2>What I&rsquo;d do differently</h2>
+            <p>
+              Book the huts earlier. In July the popular ones fill up weeks ahead, and
+              a car would not have helped with that at all.
+            </p>
+          </div>
+
+          <ul class="taxonomy" aria-label="Tags">
+            <li><a class="pill" href="category.html">#hiking</a></li>
+            <li><a class="pill" href="category.html">#italy</a></li>
+            <li><a class="pill" href="category.html">#slow-travel</a></li>
+          </ul>
+        </article>
+
+        <section aria-labelledby="comments-heading">
+          <h2 id="comments-heading">Comments (2)</h2>
+
+          <article class="comment">
+            <p class="comment__meta">
+              <strong>Marco</strong> ·
+              <time datetime="2026-07-13">13 July 2026</time>
+            </p>
+            <p>
+              Great write-up! Which app did you use to check the bus times? They can
+              be hard to find online.
+            </p>
+          </article>
+
+          <article class="comment">
+            <p class="comment__meta">
+              <strong>Lena</strong> ·
+              <time datetime="2026-07-14">14 July 2026</time>
+            </p>
+            <p>
+              Doing this exact route next month — thanks for the hut-booking tip, I
+              would have left it too late.
+            </p>
+          </article>
+
+          <h3>Leave a comment</h3>
+          <form action="#" method="post" novalidate>
+            <fieldset>
+              <legend>Your comment</legend>
+
+              <div class="form-grid-2">
+                <div class="form-row">
+                  <label for="c-name"
+                    >Name <span class="required-mark" aria-hidden="true">*</span></label
+                  >
+                  <input
+                    type="text"
+                    id="c-name"
+                    name="name"
+                    required
+                    minlength="2"
+                    maxlength="60"
+                    autocomplete="name"
+                  />
+                </div>
+
+                <div class="form-row">
+                  <label for="c-email"
+                    >Email <span class="required-mark" aria-hidden="true">*</span></label
+                  >
+                  <input
+                    type="email"
+                    id="c-email"
+                    name="email"
+                    required
+                    autocomplete="email"
+                  />
+                  <span class="hint">Not published — used only to notify you of replies.</span>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <label for="c-body"
+                  >Comment <span class="required-mark" aria-hidden="true">*</span></label
+                >
+                <textarea
+                  id="c-body"
+                  name="comment"
+                  required
+                  minlength="5"
+                  maxlength="1000"
+                ></textarea>
+              </div>
+
+              <div class="form-row">
+                <label>
+                  <input type="checkbox" name="notify" style="width:auto" />
+                  Notify me of follow-up comments by email
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="form-actions">
+              <button type="submit" class="btn">Post comment</button>
+              <button type="reset" class="btn btn--ghost">Clear</button>
+            </div>
+          </form>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <p>&copy; 2026 Anna Weber. Built as a semantic HTML/CSS prototype.</p>
+        <nav aria-label="Footer">
+          <a href="about.html">About</a> · <a href="contact.html">Contact</a> ·
+          <a href="login.html">Author login</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

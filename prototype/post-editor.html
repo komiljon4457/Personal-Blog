@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New post — Anna's Blog</title>
+    <meta name="robots" content="noindex" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <p class="site-title"><a href="index.html">Anna&rsquo;s Blog</a></p>
+        <nav class="main-nav" aria-label="Primary">
+          <ul>
+            <li><a href="admin.html">Dashboard</a></li>
+            <li><a href="post-editor.html" aria-current="page">New post</a></li>
+            <li><a href="index.html">View site</a></li>
+            <li><a href="login.html">Log out</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page">
+      <div class="layout-narrow">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="admin.html">Dashboard</a></li>
+            <li aria-current="page">New post</li>
+          </ol>
+        </nav>
+
+        <header class="page-intro">
+          <h1>Create a new post</h1>
+          <p>Fields marked <span class="required-mark">*</span> are required.</p>
+        </header>
+
+        <form action="admin.html" method="post">
+          <fieldset>
+            <legend>Content</legend>
+
+            <div class="form-row">
+              <label for="title"
+                >Title <span class="required-mark" aria-hidden="true">*</span></label
+              >
+              <input
+                type="text"
+                id="title"
+                name="title"
+                required
+                minlength="3"
+                maxlength="120"
+                placeholder="An engaging headline"
+              />
+            </div>
+
+            <div class="form-row">
+              <label for="slug"
+                >URL slug <span class="required-mark" aria-hidden="true">*</span></label
+              >
+              <input
+                type="text"
+                id="slug"
+                name="slug"
+                required
+                pattern="[a-z0-9]+(?:-[a-z0-9]+)*"
+                maxlength="120"
+                placeholder="an-engaging-headline"
+              />
+              <span class="hint">
+                Lower-case letters, numbers and hyphens only (e.g.
+                <code>my-first-post</code>).
+              </span>
+            </div>
+
+            <div class="form-row">
+              <label for="excerpt">Excerpt</label>
+              <textarea
+                id="excerpt"
+                name="excerpt"
+                maxlength="300"
+                placeholder="A short summary shown in listings (optional)."
+                style="min-height: 4rem"
+              ></textarea>
+              <span class="hint">Up to 300 characters.</span>
+            </div>
+
+            <div class="form-row">
+              <label for="body"
+                >Body <span class="required-mark" aria-hidden="true">*</span></label
+              >
+              <textarea
+                id="body"
+                name="body"
+                required
+                minlength="20"
+                placeholder="Write your post here…"
+                style="min-height: 16rem"
+              ></textarea>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Organisation</legend>
+
+            <div class="form-grid-2">
+              <div class="form-row">
+                <label for="category"
+                  >Category <span class="required-mark" aria-hidden="true">*</span></label
+                >
+                <select id="category" name="category" required>
+                  <option value="">— Choose a category —</option>
+                  <option value="travel">Travel</option>
+                  <option value="tech">Tech</option>
+                  <option value="food">Food</option>
+                  <option value="life">Life</option>
+                </select>
+              </div>
+
+              <div class="form-row">
+                <label for="tags">Tags</label>
+                <input
+                  type="text"
+                  id="tags"
+                  name="tags"
+                  placeholder="hiking, italy, slow-travel"
+                />
+                <span class="hint">Comma-separated.</span>
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-row">
+                <label for="status"
+                  >Status <span class="required-mark" aria-hidden="true">*</span></label
+                >
+                <select id="status" name="status" required>
+                  <option value="draft">Draft</option>
+                  <option value="published">Published</option>
+                  <option value="archived">Archived</option>
+                </select>
+              </div>
+
+              <div class="form-row">
+                <label for="publish-date">Publish date</label>
+                <input type="date" id="publish-date" name="publishDate" min="2020-01-01" />
+                <span class="hint">Leave empty to publish immediately.</span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label for="cover">Cover image URL</label>
+              <input
+                type="url"
+                id="cover"
+                name="cover"
+                placeholder="https://example.com/image.jpg"
+              />
+            </div>
+          </fieldset>
+
+          <div class="form-actions">
+            <button type="submit" class="btn">Save post</button>
+            <a href="admin.html" class="btn btn--ghost">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <p>&copy; 2026 Anna Weber. Admin area — semantic HTML/CSS prototype.</p>
+        <nav aria-label="Footer">
+          <a href="index.html">View site</a> · <a href="login.html">Log out</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

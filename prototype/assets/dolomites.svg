@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="Placeholder mountain landscape">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4c66a" />
+      <stop offset="1" stop-color="#e78f6b" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="600" fill="url(#sky)" />
+  <circle cx="920" cy="150" r="60" fill="#fff3d6" opacity="0.9" />
+  <polygon points="0,600 250,300 420,460 620,240 820,470 1000,300 1200,600" fill="#3d5a52" />
+  <polygon points="0,600 180,420 360,600" fill="#2f4740" />
+  <polygon points="620,240 700,340 540,340" fill="#e9eef0" opacity="0.85" />
+  <text x="600" y="560" font-family="system-ui, sans-serif" font-size="26" fill="#ffffff" text-anchor="middle" opacity="0.8">Placeholder image — Dolomites</text>
+</svg>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Author login — Anna's Blog</title>
+    <meta name="robots" content="noindex" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <p class="site-title"><a href="index.html">Anna&rsquo;s Blog</a></p>
+        <nav class="main-nav" aria-label="Primary">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="category.html">Categories</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html" aria-current="page">Log in</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page">
+      <div class="layout-narrow">
+        <header class="page-intro">
+          <h1>Author login</h1>
+          <p>This area is for the blog author. Readers don&rsquo;t need an account.</p>
+        </header>
+
+        <form action="admin.html" method="post">
+          <fieldset>
+            <legend>Sign in</legend>
+
+            <div class="form-row">
+              <label for="email"
+                >Email <span class="required-mark" aria-hidden="true">*</span></label
+              >
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                autocomplete="username"
+                placeholder="anna@example.com"
+              />
+            </div>
+
+            <div class="form-row">
+              <label for="password"
+                >Password <span class="required-mark" aria-hidden="true">*</span></label
+              >
+              <input
+                type="password"
+                id="password"
+                name="password"
+                required
+                minlength="8"
+                autocomplete="current-password"
+              />
+              <span class="hint">At least 8 characters.</span>
+            </div>
+
+            <div class="form-row">
+              <label>
+                <input type="checkbox" name="remember" style="width:auto" />
+                Keep me signed in on this device
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="form-actions">
+            <button type="submit" class="btn">Log in</button>
+            <a href="index.html" class="btn btn--ghost">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <p>&copy; 2026 Anna Weber. Built as a semantic HTML/CSS prototype.</p>
+        <nav aria-label="Footer">
+          <a href="about.html">About</a> · <a href="contact.html">Contact</a> ·
+          <a href="login.html">Author login</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>
