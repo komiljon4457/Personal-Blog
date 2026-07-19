@@ -2,5 +2,5 @@
   <rect width="1200" height="600" fill="#e7f1ec" />
   <circle cx="600" cy="250" r="110" fill="#2f6f4f" opacity="0.85" />
   <rect x="440" y="380" width="320" height="180" rx="90" fill="#2f6f4f" opacity="0.85" />
-  <text x="600" y="560" font-family="system-ui, sans-serif" font-size="26" fill="#245740" text-anchor="middle" opacity="0.8">Placeholder portrait — Anna Weber</text>
+  <text x="600" y="560" font-family="system-ui, sans-serif" font-size="26" fill="#245740" text-anchor="middle" opacity="0.8">Placeholder portrait — Author</text>
 </svg>

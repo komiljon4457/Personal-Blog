@@ -14,7 +14,9 @@
     "db:migrate": "node src/db/migrate.js",
     "db:seed": "node src/db/seed.js",
     "start": "node src/server.js",
-    "dev": "node --watch src/server.js"
+    "dev": "node --watch src/server.js",
+    "spa:build": "npm install --prefix spa && npm run build --prefix spa",
+    "build": "npm run sass:build && npm run spa:build"
   },
   "keywords": [],
   "author": "",

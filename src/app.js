@@ -3,6 +3,7 @@
 // =============================================================================
 
 const path = require("path");
+const fs = require("fs");
 const express = require("express");
 
 const publicRoutes = require("./routes/index");
@@ -75,6 +76,16 @@ app.use((req, res, next) => {
 app.use("/api", apiRoutes);
 app.use("/", publicRoutes);
 app.use("/", adminRoutes);
+
+// ---- Built Vue SPA (production) ---------------------------------------------
+// If the SPA has been built (spa/dist), serve it at /app on this same port.
+// Static files resolve first; any other /app/* path falls back to index.html so
+// Vue Router's history mode handles deep links (e.g. /app/posts/:slug on reload).
+const spaDist = path.join(__dirname, "..", "spa", "dist");
+if (fs.existsSync(path.join(spaDist, "index.html"))) {
+  app.use("/app", express.static(spaDist));
+  app.use("/app", (req, res) => res.sendFile(path.join(spaDist, "index.html")));
+}
 
 // ---- 404 --------------------------------------------------------------------
 app.use((req, res) => {

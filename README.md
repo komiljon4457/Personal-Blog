@@ -126,7 +126,7 @@ exposes a **REST API** (JSON) alongside the rendered pages. Full write-up:
 
 ```bash
 curl http://localhost:3000/api/posts                 # list published posts (JSON)
-curl http://localhost:3000/api/posts/three-days-in-the-dolomites   # one post by slug
+curl http://localhost:3000/api/posts/welcome-to-my-blog   # one post by slug
 ```
 
 ```bash
@@ -208,4 +208,54 @@ CSR view (/explore)├─▶ REST /api  ─┐
                    │               ├─▶ services ─▶ repositories ─▶ SQLite
                    └─▶ GraphQL ────┘
 ```
+
+---
+
+## Vue SPA (Step 6)
+
+A standalone **Vue 3 single-page application** in [`spa/`](spa), built with **Vite**,
+that consumes the same backend by **AJAX**. Full write-up:
+[`docs/step-6-vue-spa.md`](docs/step-6-vue-spa.md).
+
+- **Vite project** — dev server + HMR + production build with route code-splitting.
+- **SFCs** — modularised into `components/` (reusable: `PostCard`, `CommentList`,
+  `CommentForm`, `SiteHeader/Footer`) and `views/` (one per route).
+- **Vue Router** — history-mode routing for `/`, `/posts/:slug`, `/category/:slug`,
+  `/about`, and a 404; views are lazy-loaded.
+- **AJAX** — all communication via a single [`services/api.js`](spa/src/services/api.js)
+  (`fetch` → REST), with responses normalised to camelCase.
+- **Dev proxy** — Vite forwards `/api`, `/graphql`, `/css`, `/assets` to the Express
+  server (`:3000`), so requests stay same-origin and the SPA reuses the site's CSS.
+
+```bash
+npm start            # backend + API on :3000 (from the project root)
+cd spa && npm install && npm run dev   # SPA on http://localhost:5173
+```
+
+---
+
+## Production build — single port (Step 7)
+
+For production the SPA is **built to static files and served by Express**, so
+everything runs on **one port** (no separate Vite server). Full write-up:
+[`docs/step-7-production.md`](docs/step-7-production.md).
+
+- **`npm run build`** — minifies the CSS (Sass) and builds the SPA (`spa/dist`).
+- **Express serves the SPA at `/app`** with a **history-mode fallback**, so deep
+  links like `/app/posts/:slug` work on reload. Built under Vite `base: "/app/"`;
+  routing uses `import.meta.env.BASE_URL`, so no code changes between dev and prod.
+- **Same origin** — the built SPA loads the shared CSS from `/css` and calls `/api`
+  directly (no proxy needed in production).
+
+```bash
+npm run build     # compile CSS + build the Vue SPA
+npm start         # single server on http://localhost:3000
+```
+
+| One server, everything on `:3000` | |
+| --- | --- |
+| `/` | SSR site |
+| `/explore` | CSR view (vanilla JS) |
+| `/api/…` · `/graphql` | REST · GraphQL APIs |
+| `/app` | built Vue SPA |
 

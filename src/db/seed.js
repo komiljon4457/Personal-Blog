@@ -9,99 +9,99 @@ const migrate = require("./migrate");
 
 const authors = [
   {
-    name: "Anna Weber",
-    email: "anna@example.com",
+    name: "Admin",
+    email: "admin@example.com",
     // Auth is stubbed in this step — this is a placeholder, not a real hash.
     password_hash: "stub$not-a-real-hash",
-    bio: "A software developer based in Berlin who spends far too much of her free time in the mountains.",
+    bio: "The author behind My Blog — sharing short posts about tech, food, travel, and everyday life.",
     avatar_url: "/assets/author.svg",
   },
 ];
 
 const categories = [
-  { name: "Travel", slug: "travel", description: "Slow, car-free journeys across Europe." },
-  { name: "Tech", slug: "tech", description: "Notes on building simple, durable software." },
-  { name: "Food", slug: "food", description: "The recipes I actually cook on weeknights." },
-  { name: "Life", slug: "life", description: "Everything that doesn't fit the other boxes." },
+  { name: "Travel", slug: "travel", description: "Trips, places, and getting around." },
+  { name: "Tech", slug: "tech", description: "Notes on building simple, useful software." },
+  { name: "Food", slug: "food", description: "Easy recipes and kitchen ideas." },
+  { name: "Life", slug: "life", description: "Everyday thoughts and updates." },
 ];
 
 const tags = [
-  "hiking", "italy", "slow-travel", "webdev", "minimalism",
-  "recipes", "vegetarian", "trains", "berlin",
+  "welcome", "general", "web", "tips", "minimalism",
+  "recipes", "quick", "ideas", "getting-started",
 ].map((name) => ({ name, slug: name }));
 
 // posts reference categories/tags by slug for readability
 const posts = [
   {
-    title: "Three days in the Dolomites without a car",
-    slug: "three-days-in-the-dolomites",
+    title: "Welcome to My Blog",
+    slug: "welcome-to-my-blog",
     excerpt:
-      "How I planned a three-day hut-to-hut route using only buses, cable cars, and my own two feet.",
+      "A quick introduction to this blog and what you can expect to find here.",
     content:
-      "Public transport in the Italian Alps is better than its reputation. Over a long weekend I linked together three mountain huts using nothing but regional buses, a cable car, and my own two feet — and never once wished for a car.\n\nDay one: from Dobbiaco station the 445 bus runs hourly up to the Auronzo hut. Day two was the long traverse. What I'd do differently: book the huts earlier.",
+      "Welcome! This is the first post on My Blog. Here I'll share short articles across a few topics — from technology to food, travel, and everyday ideas.\n\nEvery post can have categories and tags, and readers can leave comments. Comments are moderated, so they appear once they've been approved.\n\nThanks for stopping by — take a look around.",
     status: "published",
     published_at: "2026-07-12 09:00:00",
-    categories: ["travel"],
-    tags: ["hiking", "italy", "slow-travel"],
+    categories: ["life"],
+    tags: ["welcome", "general"],
   },
   {
-    title: "Why I moved my blog to plain HTML and CSS",
-    slug: "plain-html-and-css",
+    title: "Building a simple website",
+    slug: "building-a-simple-website",
     excerpt:
-      "After years of heavyweight tooling, I stripped my site back to semantic HTML and a single stylesheet.",
+      "A few thoughts on keeping a personal website small, fast, and easy to maintain.",
     content:
-      "After years of wrestling with heavyweight tooling, I stripped my site back to semantic HTML and a single stylesheet. It loads instantly and I actually understand every line again.",
+      "A good website doesn't need heavy tooling. Semantic HTML, a little CSS, and a small backend go a long way.\n\nStart with the content and structure first, add styling next, and only reach for a framework once you actually need one. The result is a site that loads quickly and stays easy to understand.",
     status: "published",
     published_at: "2026-06-30 10:00:00",
     categories: ["tech"],
-    tags: ["webdev", "minimalism"],
+    tags: ["web", "tips", "minimalism"],
   },
   {
-    title: "A slow-cooked lentil stew for grey days",
-    slug: "lentil-stew",
+    title: "A quick and easy recipe",
+    slug: "a-quick-and-easy-recipe",
     excerpt:
-      "Comfort in a bowl — the one-pot recipe I come back to whenever the weather turns.",
+      "A no-fuss recipe you can put together on a busy weeknight.",
     content:
-      "Comfort in a bowl. This is the one-pot recipe I come back to whenever the weather turns and I want the kitchen to smell like home.",
+      "Some of the best meals come together in a single pot with whatever is already in the cupboard.\n\nCombine your base ingredients, season to taste, and let everything simmer until it's ready. Simple, warm, and satisfying — with very little washing up afterwards.",
     status: "published",
     published_at: "2026-06-18 18:00:00",
     categories: ["food"],
-    tags: ["recipes", "vegetarian"],
+    tags: ["recipes", "quick"],
   },
   {
-    title: "Notes on the Berlin S-Bahn (untitled)",
-    slug: "berlin-s-bahn-notes",
+    title: "Ideas for upcoming posts",
+    slug: "ideas-for-upcoming-posts",
     excerpt: "",
-    content: "A work-in-progress draft about getting around Berlin by rail.",
+    content: "A work-in-progress draft listing a few topics to write about next.",
     status: "draft",
     published_at: null,
     categories: ["travel"],
-    tags: ["berlin", "trains"],
+    tags: ["ideas"],
   },
 ];
 
 const comments = [
   {
-    postSlug: "three-days-in-the-dolomites",
-    author_name: "Marco",
-    author_email: "marco@example.com",
-    content: "Great write-up! Which app did you use to check the bus times?",
+    postSlug: "welcome-to-my-blog",
+    author_name: "Sam",
+    author_email: "sam@example.com",
+    content: "Great to see the new blog up and running. Looking forward to more posts!",
     status: "approved",
     created_at: "2026-07-13 08:00:00",
   },
   {
-    postSlug: "three-days-in-the-dolomites",
-    author_name: "Lena",
-    author_email: "lena@example.com",
-    content: "Doing this exact route next month — thanks for the hut-booking tip!",
+    postSlug: "welcome-to-my-blog",
+    author_name: "Jordan",
+    author_email: "jordan@example.com",
+    content: "Nice and clean design. Keep it up!",
     status: "approved",
     created_at: "2026-07-14 12:00:00",
   },
   {
-    postSlug: "plain-html-and-css",
-    author_name: "Sam",
-    author_email: "sam@example.com",
-    content: "Refreshing to read. Any tips for keeping CSS organised at scale?",
+    postSlug: "building-a-simple-website",
+    author_name: "Alex",
+    author_email: "alex@example.com",
+    content: "Really useful — any tips for keeping CSS organised as a site grows?",
     status: "pending",
     created_at: "2026-07-01 09:30:00",
   },

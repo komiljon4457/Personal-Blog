@@ -6,3 +6,4 @@ prototype/css/*.css.map
 
 # Step 3 (Node backend)
 data/
+docs/

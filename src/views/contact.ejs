@@ -28,7 +28,7 @@
               <div class="form-row">
                 <label for="name">Full name <span class="required-mark" aria-hidden="true">*</span></label>
                 <input type="text" id="name" name="name" required minlength="2" maxlength="80"
-                       value="<%= formData.name || '' %>" autocomplete="name" placeholder="Anna Weber" />
+                       value="<%= formData.name || '' %>" autocomplete="name" placeholder="Admin" />
                 <% if (formErrors.name) { %><span class="hint"><%= formErrors.name %></span><% } %>
               </div>
 
@@ -75,7 +75,7 @@
               <label>
                 <input type="checkbox" name="consent" value="yes" required style="width:auto"
                        <%= formData.consent ? "checked" : "" %> />
-                I agree that my message may be stored so that Anna can reply.
+                I agree that my message may be stored so that we can reply.
                 <span class="required-mark" aria-hidden="true">*</span>
               </label>
               <% if (formErrors.consent) { %><span class="hint"><%= formErrors.consent %></span><% } %>
